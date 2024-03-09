@@ -1,7 +1,9 @@
 ---
 title: "Introduction to Gray-Matter"
-subtitle: "Learning how to setup and use gray-matter for blogs."
+desc: "Learning how to setup and use gray-matter for blogs."
+img: "easytax"
 date: "2024-02-10"
+tags: ["Web Dev"]
 ---
 
 # Introduction to Gray-Matter

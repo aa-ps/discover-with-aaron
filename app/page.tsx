@@ -7,6 +7,9 @@ export default function Home() {
         <h1 className="font-medium uppercase text-2xl underline underline-offset-4">
           Latest Content
         </h1>
+      </section>
+      {/* <section className="continue-content">
+        <h2 className="text-xl">Continue where you left off</h2>
         <article className="blog-post">
           <Image
             src={"/images/easytax.webp"}
@@ -32,10 +35,7 @@ export default function Home() {
             </p>
           </div>
         </article>
-      </section>
-      <section className="continue-content">
-        <h2 className="text-xl">History</h2>
-      </section>
+      </section> */}
     </main>
   );
 }
