@@ -19,7 +19,7 @@ export default function About() {
           <li>He wants to share his knowledge with others.</li>
           <li>He wants to learn how to blog.</li>
           <li>He wants to have a cool project to show off.</li>
-          <li>He wants to 'potentially' have a side business.</li>
+          <li>He wants to have a side business.</li>
         </ul>
       </section>
       <section>
