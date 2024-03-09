@@ -22,14 +22,15 @@ body {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+  @apply font-sans;
 }
 
 .nav-link{
-    @apply hover:scale-125;
+    @apply text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium;
 }
 
 .nav-link-active{
-    @apply underline;
+    @apply bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium;
 }
 
 .home-layout{
@@ -42,6 +43,7 @@ body {
 }
 
 .continue-content{
+  @apply flex flex-col gap-5;
   grid-area: continue;
 }
 
