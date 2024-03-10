@@ -1,41 +1,34 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="home-layout">
-      <section className="latest-content">
-        <h1 className="font-medium uppercase text-2xl underline underline-offset-4">
-          Latest Content
-        </h1>
-      </section>
-      {/* <section className="continue-content">
-        <h2 className="text-xl">Continue where you left off</h2>
-        <article className="blog-post">
-          <Image
-            src={"/images/easytax.webp"}
-            width={180}
-            height={180}
-            alt="Image"
-            className="blog-post-img"
-          />
-          <div className="pl-3">
-            <div className="blog-post-head">
-              <h3 className="font-medium underline underline-offset-2">EasyTax</h3>
-              <div className="blog-post-tags">
-                <ul className="flex gap-2">
-                    <li className="border border-black p-1 text-xs rounded-lg">Android</li>
-                    <li className="border border-black p-1 text-xs rounded-lg">Flutter</li>
-                </ul>
-              </div>
-            </div>
-            <p className="blog-post-desc">
-              EasyTax is the senior design project our group is working on. This
-              mobile application aims to provide utilities for processing your
-              Income Tax Return easier.
-            </p>
+    <div className="relative isolate px-6 pt-14 lg:px-8">
+      <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+            Embrace The Infinite Quest For Knowledge
+          </h1>
+          <p className="mt-6 text-lg leading-8 text-gray-600">
+            Join me on an enlightening journey where curiosity reigns and
+            learning never stops.
+          </p>
+          <div className="mt-10 flex items-center justify-center gap-x-6">
+            <Link
+              href="/blog"
+              className="rounded-md bg-blue-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+            >
+              View Posts
+            </Link>
+            <Link
+              href="/about"
+              className="text-sm font-semibold px-3.5 py-2.5 text-gray-900 rounded-md bg-slate-200 hover:bg-slate-300"
+            >
+              Learn More <span aria-hidden="true">→</span>
+            </Link>
           </div>
-        </article>
-      </section> */}
-    </main>
+        </div>
+      </div>
+    </div>
   );
 }
