@@ -8,11 +8,12 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      colors:{
-        'theme-black' : '#010400',
-        'theme-white' : '#FBFFFE',
-        'theme-gray' : '#7D8491',
-        'theme-red' : '#FF3A20',
+      colors: {
+        "theme-black": "#000000",
+        "theme-darkblue": "#14213D",
+        "theme-orange": "#FCA311",
+        "theme-gray": "#E5E5E5",
+        "theme-white": "#FFFFFF",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
@@ -21,8 +22,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-  ],
+  plugins: [require("@tailwindcss/typography")],
 };
 export default config;
