@@ -7,11 +7,11 @@ export async function generateMetadata(
   {
     params,
   }: {
-    params: { blog_post: string };
+    params: { slug: string };
   }
 ): Promise<Metadata> {
  
-  const blogData = getBlogData(params.blog_post);
+  const blogData = getBlogData(params.slug);
 
   if (!blogData) {
     notFound();
@@ -33,10 +33,10 @@ export async function generateMetadata(
 export default function BlogPost({
   params,
 }: {
-  params: { blog_post: string };
+  params: { slug: string };
 }) {
   
-  const blogData = getBlogData(params.blog_post);
+  const blogData = getBlogData(params.slug);
 
   if (!blogData) {
     notFound();
@@ -55,10 +55,10 @@ export default function BlogPost({
 }
 
 
-export async function getStaticPaths() {
+export async function generateStaticParams() {
   const posts = getBlogPosts();
   const paths = posts.map((post) => ({
-    params: { blog_post: post.slug },
+    params: { slug: post.slug },
   }));
   return { paths, fallback: false };
 }
