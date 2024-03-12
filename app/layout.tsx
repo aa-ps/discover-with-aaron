@@ -22,9 +22,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body className="min-h-screen flex flex-col items-center">
         <Header />
-        <div className="min-h-screen p-10 flex flex-col items-center">{children}</div>
+        <div className="flex-grow p-10 w-full flex justify-center">{children}</div>
         <Footer />
       </body>
     </html>
