@@ -10,7 +10,7 @@ export default function BlogContainer({ data }: { data: BlogMetadata }) {
         <Link href={`/blog/${data.slug}`}>
           <Image
             className="rounded-t-lg object-cover"
-            src={`/images/${data.img}.webp`}
+            src={`/images/${data.slug}/${data.img}.webp`}
             alt={`${data.img} Blog Image`}
             fill
             quality={100}
