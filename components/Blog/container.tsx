@@ -1,9 +1,11 @@
 import { BlogMetadata } from "@/utils/blog-tools";
+import moment from "moment";
 import Image from "next/image";
 import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
 
 export default function BlogContainer({ data }: { data: BlogMetadata }) {
+  const formattedDate = moment(data.date).format('MMMM Do, YYYY');
   return (
       <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-theme-darkblue dark:border-gray-700 relative flex flex-col h-[400px]">
       <div className="w-full h-full relative">
@@ -37,9 +39,10 @@ export default function BlogContainer({ data }: { data: BlogMetadata }) {
             })}
           </ul>
         </div>
-        <p className="my-2 font-normal text-gray-700 dark:text-gray-400 flex-grow">
+        <p className="my-2 font-normal text-theme-gray dark:text-gray-400 flex-grow">
           {data.desc}
         </p>
+        <div className="flex w-full">
         <Link
           href={`/blog/${data.slug}`}
           className="inline-flex items-center w-fit px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -47,6 +50,9 @@ export default function BlogContainer({ data }: { data: BlogMetadata }) {
           Read More
           <FaArrowRight className="rtl:rotate-180 w-3.5 h-3.5 ms-2" />
         </Link>
+        <p className="ml-auto self-end text-theme-gray text-xs font-medium">{formattedDate}</p>
+        </div>
+        
       </div>
     </div>
   );
