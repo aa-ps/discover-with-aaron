@@ -20,6 +20,7 @@ export async function generateMetadata({
   }
 
   return {
+    metadataBase: new URL("https://discoverwithaaron.com"),
     title: blogData.title,
     description: blogData.desc,
     authors: [{ name: "Aaron" }],
@@ -27,7 +28,16 @@ export async function generateMetadata({
       title: blogData.title,
       description: blogData.desc,
       type: "article",
-      images: `/images/${blogData.img}.webp`,
+      images: [
+        {
+          url: `/images/${blogData.slug}/${blogData.img}.webp`,
+          width: 800,
+          height: 600,
+          alt: blogData.title,
+        }
+      ],
+      url: `https://discoverwithaaron.com/blog/${blogData.slug}`
+      
     },
   };
 }
