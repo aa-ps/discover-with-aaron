@@ -1,11 +1,11 @@
 import { BlogMetadata } from "@/utils/blog-tools";
-import moment from "moment";
+import dayjs from "dayjs";
 import Image from "next/image";
 import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
 
 export default function BlogContainer({ data }: { data: BlogMetadata }) {
-  const formattedDate = moment(data.date).format('MMMM Do, YYYY');
+  const formattedDate = dayjs(data.date).format("MMMM D, YYYY");
   return (
       <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-theme-darkblue dark:border-gray-700 relative flex flex-col h-[400px]">
       <div className="w-full h-full relative">

@@ -1,12 +1,10 @@
 import CopyButton from "@/components/Blog/copy";
 import { getBlogData, getBlogPosts } from "@/utils/blog-tools";
-import moment from "moment";
+import dayjs from "dayjs";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import React from "react";
 import Markdown from "react-markdown";
-import rehypeRaw from "rehype-raw";
-import remarkGfm from "remark-gfm";
 
 export async function generateMetadata({
   params,
@@ -49,13 +47,11 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
     notFound();
   }
 
-  const formattedDate = moment(blogData.date).format("MMMM Do, YYYY");
+  const formattedDate = dayjs(blogData.date).format("MMMM D, YYYY");
 
   return (
     <article className="prose lg:prose-xl sm:prose-sm">
       <Markdown
-        rehypePlugins={[rehypeRaw]}
-        remarkPlugins={[remarkGfm]}
         components={{
           h1(props) {
             const { node, ...rest } = props;
