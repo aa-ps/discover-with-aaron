@@ -1,5 +1,6 @@
 import fs from "fs";
 import matter from "gray-matter";
+import path from "path";
 
 export interface BlogMetadata {
   title: string;
@@ -31,8 +32,9 @@ export const getBlogPosts = (): BlogMetadata[] => {
 
 export const getBlogData = (slug: string): BlogMetadata | null => {
   try {
+    const fixedPath = path.join(process.cwd(), 'posts');
     const { data, content } = matter(
-      fs.readFileSync(`posts/${slug}.md`, "utf-8")
+      fs.readFileSync(`${fixedPath}/${slug}.md`, "utf-8")
     );
     return {
       title: data.title,
