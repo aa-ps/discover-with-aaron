@@ -1,3 +1,10 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About Me",
+  description: "Learn more about the blogger and why he blogs!",
+};
+
 export default function About() {
   return (
     <main className="prose sm:prose-sm lg:prose-lg">

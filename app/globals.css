@@ -3,7 +3,17 @@
 @tailwind utilities;
 
 @layer components {
+  ::-webkit-scrollbar {
+    @apply w-2.5 bg-theme-gray; /* Width and background color of the scrollbar */
+  }
 
+  ::-webkit-scrollbar-track {
+    @apply bg-theme-gray; /* Background color of the scrollbar track */
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-theme-darkblue hover:bg-[#2c3750]; /* Style for the draggable scrolling handle */
+  }
 }
 
 html,
@@ -20,11 +30,11 @@ body {
 }
 
 .nav-link {
-  @apply text-gray-300 hover:bg-blue-950 hover:text-white rounded-md px-3 py-2 text-sm font-medium;
+  @apply text-theme-gray hover:bg-[#2c3750] hover:text-white rounded-md px-3 py-2 text-sm font-medium;
 }
 
 .nav-link-active {
-  @apply bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium;
+  @apply bg-[#0e172b] text-white rounded-md px-3 py-2 text-sm font-medium;
 }
 
 .home-bg {
