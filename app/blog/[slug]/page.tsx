@@ -2,6 +2,7 @@ import CopyButton from "@/components/Blog/copy";
 import { getBlogData, getBlogPosts } from "@/utils/blog-tools";
 import dayjs from "dayjs";
 import { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import React from "react";
 import Markdown from "react-markdown";
@@ -63,10 +64,14 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
             );
           },
           img(props) {
-            const { node, ...rest } = props;
+            const { node, src, alt, width, height, ...rest } = props;
             return (
-              <img
-                className="rounded-lg shadow-lg border-4 border-theme-darkblue transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105"
+              <Image
+                className="mx-auto rounded-lg shadow-lg border-4 border-theme-darkblue transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105"
+                src={src!}
+                alt={alt!}
+                width={600}
+                height={600}
                 {...rest}
               />
             );

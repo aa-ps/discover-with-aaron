@@ -3,7 +3,7 @@ import { FaGithubSquare, FaLinkedin } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <footer className="shadow dark:bg-theme-darkblue w-full">
+    <footer className="shadow bg-theme-darkblue w-full">
       <div className="flex flex-col items-center justify-center mx-auto max-w-screen-xl p-4 md:flex md:flex-row md:items-center md:justify-between sm:flex">
         <span className="text-sm text-theme-gray sm:text-center dark:text-gray-400">
           © 2024{" "}
