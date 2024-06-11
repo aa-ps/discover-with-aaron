@@ -12,19 +12,28 @@ export interface BlogMetadata {
   html: string;
 }
 
+const POSTS_DIR = path.join(process.cwd(), 'posts');
+
+const getFileNameWithoutExtension = (fileName: string): string => fileName.replace(".md", "");
+
+const parseMarkdownFile = (filePath: string) => {
+  const fileContent = fs.readFileSync(filePath, "utf-8");
+  return matter(fileContent);
+}
+
 export const getBlogPosts = (): BlogMetadata[] => {
   return fs
-    .readdirSync("posts")
-    .filter((file) => file.endsWith(".md"))
+    .readdirSync(POSTS_DIR)
+    .filter((fileName) => fileName.endsWith(".md"))
     .map((fileName) => {
-      const { data } = matter(fs.readFileSync(`posts/${fileName}`, "utf-8"));
+      const { data } = parseMarkdownFile(path.join(POSTS_DIR, fileName));
       return {
         title: data.title,
         date: data.date,
         desc: data.desc,
         img: data.img,
         tags: data.tags,
-        slug: fileName.replace(".md", ""),
+        slug: getFileNameWithoutExtension(fileName),
         html: "",
       };
     });
@@ -32,10 +41,7 @@ export const getBlogPosts = (): BlogMetadata[] => {
 
 export const getBlogData = (slug: string): BlogMetadata | null => {
   try {
-    const fixedPath = path.join(process.cwd(), 'posts');
-    const { data, content } = matter(
-      fs.readFileSync(`${fixedPath}/${slug}.md`, "utf-8")
-    );
+    const { data, content } = parseMarkdownFile(path.join(POSTS_DIR, `${slug}.md`));
     return {
       title: data.title,
       date: data.date,
@@ -45,8 +51,8 @@ export const getBlogData = (slug: string): BlogMetadata | null => {
       slug: slug,
       html: content,
     };
-  } catch (e) {
-    console.error(e);
+  } catch (error) {
+    console.error(error);
     return null;
   }
 };

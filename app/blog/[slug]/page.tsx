@@ -7,38 +7,44 @@ import { notFound } from "next/navigation";
 import React from "react";
 import Markdown from "react-markdown";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string };
-}): Promise<Metadata> {
-  const blogData = getBlogData(params.slug);
+async function fetchMetadata(slug: string): Promise<Metadata> {
+  const blogData = getBlogData(slug);
 
   if (!blogData) {
     notFound();
   }
 
+  const { title, desc, slug: blogSlug, img } = blogData;
+  const baseURL = new URL("https://discoverwithaaron.com");
+
   return {
-    metadataBase: new URL("https://discoverwithaaron.com"),
-    title: blogData.title,
-    description: blogData.desc,
+    metadataBase: baseURL,
+    title,
+    description: desc,
     authors: [{ name: "Aaron" }],
     openGraph: {
-      title: blogData.title,
-      description: blogData.desc,
+      title,
+      description: desc,
       type: "article",
       images: [
         {
-          url: `/images/${blogData.slug}/${blogData.img}.webp`,
+          url: `${baseURL.origin}/images/${blogSlug}/${img}.webp`,
           width: 800,
           height: 600,
-          alt: blogData.title,
-        }
+          alt: title,
+        },
       ],
-      url: `https://discoverwithaaron.com/blog/${blogData.slug}`
-      
+      url: `${baseURL.origin}/blog/${blogSlug}`,
     },
   };
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
+  return await fetchMetadata(params.slug);
 }
 
 export default function BlogPost({ params }: { params: { slug: string } }) {
@@ -54,35 +60,26 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
     <article className="prose lg:prose-xl sm:prose-sm">
       <Markdown
         components={{
-          h1(props) {
-            const { node, ...rest } = props;
-            return (
-              <div>
-                <h1 className="p-0 mb-2" {...rest} />
-                <p className="p-0 m-0 font-medium">{formattedDate}</p>
-              </div>
-            );
-          },
-          img(props) {
-            const { node, src, alt, width, height, ...rest } = props;
-            return (
-              <Image
-                className="mx-auto rounded-lg shadow-lg border-4 border-theme-darkblue transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105"
-                src={src!}
-                alt={alt!}
-                width={600}
-                height={600}
-                {...rest}
-              />
-            );
-          },
-          pre(props) {
-            const { children } = props;
+          h1: ({ node, ...props }) => (
+            <div>
+              <h1 className="p-0 mb-2" {...props} />
+              <p className="p-0 m-0 font-medium">{formattedDate}</p>
+            </div>
+          ),
+          img: ({ node, src, alt, width, height, ...props }) => (
+            <Image
+              className="mx-auto rounded-lg shadow-lg border-4 border-theme-darkblue transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105"
+              src={src!}
+              alt={alt!}
+              width={600}
+              height={600}
+              {...props}
+            />
+          ),
+          pre: ({ children, ...props }) => {
             let code = "";
             if (React.isValidElement(children)) {
-              const childProps = children.props as {
-                children: React.ReactNode;
-              };
+              const childProps = children.props as { children: React.ReactNode };
               if (typeof childProps.children === "string") {
                 code = childProps.children;
               }
@@ -90,8 +87,8 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
 
             return (
               <div className="max-w-sm md:max-w-none relative shadow-md">
-                <CopyButton code={code}></CopyButton>
-                <pre className="leading-normal">{children}</pre>
+                <CopyButton code={code} />
+                <pre className="leading-normal" {...props}>{children}</pre>
               </div>
             );
           },
@@ -105,8 +102,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
 
 export async function generateStaticParams() {
   const posts = getBlogPosts();
-  const paths = posts.map((post) => ({
+  return posts.map((post) => ({
     params: { slug: post.slug },
   }));
-  return paths;
 }
