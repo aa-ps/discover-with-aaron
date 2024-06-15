@@ -1,43 +1,46 @@
 ---
-title: "Junk Yard Inventory Manager With React, Express, and MySQL"
-desc: "Learn how to create a vehicle inventory manager with year, make, model, trim, and available parts!"
+title: "Junk Yard Inventory Manager with React, Express, and MySQL"
+desc: "Create a vehicle inventory manager with features to track year, make, model, trim, and available parts."
 img: "junkyard"
 date: "2024-06-11"
-tags: ["Web Dev", "React", "Express", "MySQL"]
+tags: ["Web Development", "React", "Express", "MySQL"]
 ---
+
 # Junk Yard Inventory Manager Project
-## Background Information
-I was inspired to work on this website when I needed a car part that was not commonly sold and visited a local junk yard.
-The business had no way to keep track of the cars in their inventory and what parts were available.
-Therefore, I thought it was a good idea to come up with a solution.
+
+## Introduction
+
+Inspired by a visit to a local junk yard in search of a rare car part, I observed the need for a system to manage vehicle inventory and available parts efficiently. This project aims to solve that problem by developing an inventory manager application.
 
 ## Prerequisites
-_Before you continue reading, make sure you have the following:_
-1. Node.js installed.
-2. MySQL on Docker or any database provider.
 
+Ensure you have the following installed before proceeding:
 
-## Clone GitHub Repository
+1. Node.js
+2. MySQL (via Docker or any database provider)
+3. Docker
+
+## Cloning the GitHub Repository
+
+Clone the project repository with the following command:
+
 ```shell
 git clone https://github.com/aa-ps/junkyardpro.git
 ```
 
-## Install Dependencies (Client & Server)
+## Running the Docker Container
+To start the project, run:
 ```shell
-(cd client && npm install) && (cd server && npm install)
+docker compose up
 ```
 
-## Setup Database
-_Assuming you have a MySQL server on Docker._
-_Modify accordingly._
-```shell
-cd server && node setup.js
-```
+## Learning Outcomes
+During the development of this project, I gained valuable experience in several areas:
+* Enhanced my understanding of database interactions and backend development.
+* Learned best practices for creating APIs.
+* Discovered the utility of GraphQL for similar projects.
+* Understood the significance of Docker in project management.
+* Grained foundational knowledge in user authentication, including cookies, tokens, and sessions.
 
-## Running The Website
-```shell
-cd client && npm run dev
-```
-
-#### Sources
-[GitHub Repo](https://github.com/aa-ps/junkyardpro)
+## References
+[GitHub Repository](https://github.com/aa-ps/junkyardpro)

@@ -1,29 +1,31 @@
 ---
 title: "How To Generate Images Using OpenAI"
-desc: "Learn how to use OpenAI's API to generate images using DALLE-3."
+desc: "Discover how to create images using OpenAI's DALLE-3 API."
 img: "alien"
 date: "2024-03-11"
 tags: ["Artificial Intelligence", "Node.js"]
 ---
 # How To Generate Images Using OpenAI 
 ## Background Information
-I kept seeing TikTok videos of people generating images using ChatGPT and I was amazed at the images that were generated. I wanted to generate some images as well, but found out that ChatGPT Plus is $20 a month! I was like hell nah, and since I already had some experience working with the OpenAI API, I did some research on how I can generate images for a cheaper price. In this post, you'll see how I learned to generate images using OpenAI.
+Lately, there's been a surge of TikTok videos showcasing AI-generated images created using ChatGPT, which sparked my curiosity. However, subscribing to ChatGPT Plus at $20 a month seemed pricey. Therefore, using my existing knowledge with OpenAI's API, I explored a more affordable way to generate images. In this post, I'll guide you through the process of generating images using OpenAI's API.
+
 
 ## Prerequisites
-_Before you continue reading, make sure you have the following:_
+_Before you start, ensure you have the following:_
 1. An OpenAI account.
 2. An OpenAI API key.
-3. Account funds.
+3. Sufficient account funds.
 4. Node.js installed.
 
-## Create Folder & JavaScript File
-Create a folder for your project and make a new file called _'**generate.js**'_. This is where we will do our coding! Now change your current directory to the new folder you created. 
+## Create a Project Folder and JavaScript File
+First, create a new folder for your project and add a file named _**generate.js**_. This file will contain the code to generate images. Change your current directory to the newly created folder.
 
-## Install NPM Packages
+## Install Required NPM Packages
 ```shell
 npm i openai 
 ```
-## Generate And Save Image Locally
+## Generate and Save the Image Locally
+Create the following code in the _**generate.js**_ file to generate and save an image:
 ```js
 import OpenAI from "openai";
 import { writeFile } from "fs";
@@ -57,7 +59,8 @@ writeFile(filePath, imageBufferData, (err) => {
   }
 });
 ```
-## Generate Image And Get URL
+## Generate an Image and Get URL
+You can also generate an image and obtain its URL:
 ```js
 import OpenAI from "openai";
 import { writeFile } from "fs";
@@ -77,7 +80,8 @@ const response = await openai.images.generate({
 
 console.log(response.data[0]) // Get response plus the URL to the image
 ```
-## Run Code
+## Execute the Code
+Run the script using the following command:
 ```shell
 node .\generate.js
 ```
