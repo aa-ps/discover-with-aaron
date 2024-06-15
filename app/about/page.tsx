@@ -13,7 +13,7 @@ export default function About() {
         <h2>Who is the Blogger?</h2>
         <ul>
           <li>Name: Aaron</li>
-          <li>Education: Bachelor's Degree in Computer Science</li>
+          <li>Education: Bachelor&apos;s Degree in Computer Science</li>
           <li>Background: Hispanic</li>
           <li>Interests: Passionate about learning</li>
         </ul>

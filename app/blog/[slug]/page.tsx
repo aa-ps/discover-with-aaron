@@ -79,7 +79,9 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
           pre: ({ children, ...props }) => {
             let code = "";
             if (React.isValidElement(children)) {
-              const childProps = children.props as { children: React.ReactNode };
+              const childProps = children.props as {
+                children: React.ReactNode;
+              };
               if (typeof childProps.children === "string") {
                 code = childProps.children;
               }
@@ -88,7 +90,9 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
             return (
               <div className="max-w-sm md:max-w-none relative shadow-md">
                 <CopyButton code={code} />
-                <pre className="leading-normal" {...props}>{children}</pre>
+                <pre className="leading-normal" {...props}>
+                  {children}
+                </pre>
               </div>
             );
           },
@@ -99,6 +103,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
     </article>
   );
 }
+
 
 export async function generateStaticParams() {
   const posts = getBlogPosts();
